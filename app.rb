@@ -4,5 +4,24 @@ require "sinatra/reloader"
 require "sinatra/activerecord"
 
 get "/" do
-  "Hello world!"
+  "Livecode"
+end
+
+
+get "/restaurants" do
+  @restaurants = Restaurant.all
+  erb :index
+  end
+
+get "/restaurants/:id" do
+  id = params[:id] # => ex: 3
+  @restaurant = Restaurant.find(id)
+  erb :show # => render views/show.erb
+end
+
+post "/restaurants" do
+  name = params[:name] # => ex: "Noma"
+  city = params[:city] # => ex: "Copenhaguen"
+  Restaurant.create(name: name, city: city)
+  redirect "/" # => redirect to the root path
 end

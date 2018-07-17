@@ -1,0 +1,25 @@
+<h1>Star Wars Restaurants</h1>
+
+<p>Size : <%= @restaurants.count %></p>
+
+
+
+<%  @restaurants.each do |r| %>
+<li><%=  r.name %></li>
+<li><%=  r.stars %></li>
+<li><%=  r.cuisine %></li>
+
+
+<% end %>
+
+<h2>Create a new Restaurant:</h2>
+
+<form action="/restaurants" method="post">
+  <label for="name">Name Star Wars</label>
+  <input type="text" id="name" name="name">
+  <label for="city">City</label>
+  <input type="text" id="city" name="city">
+  <input type="submit">
+</form>
+
+
